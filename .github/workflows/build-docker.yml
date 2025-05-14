@@ -1,14 +1,22 @@
 name: Docker Image CI
 
 on:
-  [workflow_dispatch]
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
-    pubish_images:
+
+  build:
+
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v4
-    - name: Build image
-      run: docker build ./web/ -t /genjijy/pixily:latest
-    - name: Build image to dockerhub
-      run: docker push /genjijy/pixily:latest
+    - name: Build the Docker image
+      run: docker build ./web/ -t genjijy/pixily:latest
+    - name: Push image to Docker Hub
+      run: docker push genjijy/pixily:latest
+
+
