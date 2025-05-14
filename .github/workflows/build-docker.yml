@@ -14,9 +14,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build ./web/ -t genjijy/pixily:latest
     - name: docker login
       run: docker login -u genjijy -p ${{ secrets.DOCKER_HUB_TOKEN }}
+    - name: Build the Docker image
+      run: docker build ./web/ -t genjijy/pixily:latest
     - name: Push image to Docker Hub
       run: docker push genjijy/pixily:latest
