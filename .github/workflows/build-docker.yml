@@ -20,4 +20,4 @@ jobs:
       run: docker build ./web/ -t genjijy/pixily:latest
     - name: Push image to Docker Hub
       run: docker push genjijy/pixily:latest
-#
+##
